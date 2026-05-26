@@ -1,25 +1,36 @@
-// runtime/bootstrap.ts
+import {
+    getManifest,
+} from './manifest';
 
-import { getManifest } from './manifest';
-// import { loadPlugins } from './plugin-loader';
-import { registerComponent } from './component-registry';
-import BlogList from '../plugins/blog/BlogList';
+import BlogList
+    from '../plugins/blog/BlogList';
+
+import {
+    registerComponent,
+} from './component-registry';
+
+import {
+    registerTheme,
+} from './theme-registry';
+
+import defaultTheme
+    from '../themes/default-theme';
 
 export async function bootstrapAdmin() {
 
-    const manifest = await getManifest();
-    console.log(
-        'Plugins:',
-        manifest.plugins
-    );
+    const manifest =
+        await getManifest();
 
+    console.log("Registering");
     registerComponent(
         'BlogList',
         BlogList
     );
-    //   await loadPlugins(
-    //     manifest.plugins,
-    //   );
+
+    registerTheme(
+        'default',
+        defaultTheme
+    );
 
     return manifest;
 }

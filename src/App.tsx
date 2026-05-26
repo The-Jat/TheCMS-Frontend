@@ -1,15 +1,21 @@
-// src/App.tsx
+import {
+  useEffect,
+  useState,
+} from 'react';
 
-import { useEffect, useState } from 'react';
-import { bootstrapAdmin } from './runtime/bootstrap';
+import RuntimeRoutes
+  from './runtime/RuntimeRoutes';
 
-import Layout from './layout/Layout';
-import RuntimeRoutes from './runtime/RuntimeRoutes';
+import {
+  bootstrapAdmin,
+} from './runtime/bootstrap';
 
-export default function App() {
+function App() {
 
-  const [manifest, setManifest] =
-    useState<any>(null);
+  const [
+    manifest,
+    setManifest,
+  ] = useState<any>();
 
   useEffect(() => {
 
@@ -19,14 +25,19 @@ export default function App() {
   }, []);
 
   if (!manifest) {
-    return <div>Loading...</div>;
+
+    return (
+      <div>
+        Loading...
+      </div>
+    );
   }
 
   return (
-    <Layout manifest={manifest}>
-      <RuntimeRoutes
-        manifest={manifest}
-      />
-    </Layout>
+    <RuntimeRoutes
+      manifest={manifest}
+    />
   );
 }
+
+export default App;

@@ -1,27 +1,29 @@
-// src/layout/Layout.tsx
+// layouts/AdminLayout.tsx
 
-// import { ReactNode } from 'react';
-import Sidebar from './Sidebar';
+import Sidebar from '../components/Sidebar';
 
-export default function Layout({
+export default function AdminLayout({
   manifest,
   children,
 }: any) {
+
   return (
     <div
       style={{
         display: 'flex',
-        height: '100vh',
+        minHeight: '100vh',
       }}
     >
       <Sidebar
-        items={manifest.navigation}
+        navigation={
+          manifest.navigation
+        }
       />
 
       <main
         style={{
           flex: 1,
-          padding: 20,
+          padding: '24px',
         }}
       >
         {children}

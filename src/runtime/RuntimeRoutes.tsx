@@ -1,57 +1,53 @@
-// src/runtime/RuntimeRoutes.tsx
-
 import {
     Routes,
     Route,
 } from 'react-router-dom';
 
+import AdminLayout
+    from '../layouts/AdminLayout';
+
+import DashboardPage
+    from '../pages/DashboardPage';
+
 import UnknownPluginPage
     from './UnknownPluginPage';
-
-import {
-    getComponent,
-} from './component-registry';
 
 export default function RuntimeRoutes({
     manifest,
 }: any) {
 
     return (
-        <Routes>
+        <AdminLayout
+            manifest={manifest}
+        >
 
-            <Route
-                path="/"
-                element={<h1>Dashboard</h1>}
-            />
+            <Routes>
 
-            {manifest.routes.map(
-                (route: any) => {
+                <Route
+                    path="/"
+                    element={
+                        <DashboardPage />
+                    }
+                />
 
-                    const Component =
-                        getComponent(
-                            route.component
-                        );
-
-                    return (
+                {manifest.routes.map(
+                    (route: any) => (
                         <Route
                             key={route.path}
                             path={route.path}
                             element={
-                                Component
-                                    ? <Component />
-                                    : (
-                                        <UnknownPluginPage
-                                            component={
-                                                route.component
-                                            }
-                                        />
-                                    )
+                                <UnknownPluginPage
+                                    component={
+                                        route.component
+                                    }
+                                />
                             }
                         />
-                    );
-                }
-            )}
+                    )
+                )}
 
-        </Routes>
+            </Routes>
+
+        </AdminLayout>
     );
 }

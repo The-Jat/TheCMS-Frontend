@@ -1,17 +1,28 @@
+import Card
+    from '../ui/Card';
+
 export default function DashboardPage() {
 
     return (
-        <div>
-            <h1>
-                Dashboard
-            </h1>
+        <div
+            style={{
+                display: 'grid',
+                gridTemplateColumns:
+                    'repeat(3,1fr)',
+                gap: '20px',
+            }}
+        >
+            <Card title="Plugins">
+                1
+            </Card>
 
-            <p>
-                Welcome to TheCMS
-            </p>
-            <p>
-                THE-JAT
-            </p>
+            <Card title="Routes">
+                1
+            </Card>
+
+            <Card title="Permissions">
+                1
+            </Card>
         </div>
     );
 }

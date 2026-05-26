@@ -17,7 +17,7 @@ import defaultTheme
     from '../themes/default-theme';
 
 import { registerBlogPlugin, } from '../plugins/blog/admin';
-import { registerPlugin } from './plugin-registry';
+// import { registerPlugin } from './plugin-registry';
 
 export async function bootstrapAdmin() {
 

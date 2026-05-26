@@ -1,6 +1,7 @@
 // layouts/AdminLayout.tsx
 
 import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
 
 export default function AdminLayout({
   manifest,
@@ -12,6 +13,7 @@ export default function AdminLayout({
       style={{
         display: 'flex',
         minHeight: '100vh',
+        background: '#f5f5f5',
       }}
     >
       <Sidebar
@@ -19,15 +21,27 @@ export default function AdminLayout({
           manifest.navigation
         }
       />
-
-      <main
+      <div
         style={{
           flex: 1,
-          padding: '24px',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
         }}
       >
-        {children}
-      </main>
+
+        <Header />
+
+        <main
+          style={{
+            flex: 1,
+            padding: '24px',
+            overflow: 'auto',
+          }}
+        >
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

@@ -16,16 +16,18 @@ import {
 import defaultTheme
     from '../themes/default-theme';
 
+import { registerBlogPlugin, } from '../plugins/blog/admin';
+import { registerPlugin } from './plugin-registry';
+
 export async function bootstrapAdmin() {
 
-    const manifest =
-        await getManifest();
+    const manifest = await getManifest();
 
     console.log("Registering");
-    registerComponent(
-        'BlogList',
-        BlogList
-    );
+    registerBlogPlugin();
+    // registerPlugin({
+    //     name: 'blog',
+    // });
 
     registerTheme(
         'default',

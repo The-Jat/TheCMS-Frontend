@@ -71,3 +71,9 @@ export default defineConfig([
   },
 ])
 ```
+
+## Run
+
+```
+pnpm dev
+```
